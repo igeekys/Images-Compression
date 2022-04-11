@@ -26,7 +26,7 @@ hyper = HyperParams(verbose=False)
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--use-cuda', action='store_true', default=False,
+    parser.add_argument('--use-cuda', action='store_true', default=1,
                         help='Use NVIDIA GPU acceleration')
     parser.add_argument(
         '--image-path',

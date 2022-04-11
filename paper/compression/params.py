@@ -8,7 +8,7 @@ class HyperParams() :
         self.image_h     = 224
         self.image_w     = 224
         self.image_c     = 3
-        self.mscam       = 1
+        self.mscam       = 0
         self.mscam_softmax=0 # after mscam
         self.normalize   = 0 # default
         self.finetune    = 0 # need train or not
