@@ -55,7 +55,7 @@ def compression(images_path, image_path):
     ]
     sem_class_to_idx = {cls: idx for (idx, cls) in enumerate(sem_classes)}
 
-    category_category = sem_class_to_idx["car"]
+    category_category = sem_class_to_idx["__background__"]
     category_mask = normalized_masks[0, :, :, :].argmax(axis=0).detach().cpu().numpy()
     category_mask_uint8 = 255 * np.uint8(category_mask == category_category)
     category_mask_float = np.float32(category_mask == category_category)
@@ -95,7 +95,7 @@ def compression(images_path, image_path):
     img_sem = Image.fromarray(np.repeat(category_mask_uint8[:, :, None], 3, axis=-1))
     
 
-    category = 'car'
+    category = 'back'
     img.save('compressed_{0}/both_{1}_{2}.jpg'.format(images_path, image_path, category))
     img_ori.save('compressed_{0}/ori_{1}_{2}.jpg'.format(images_path, image_path, category))
     img_cam.save('compressed_{0}/cam_{1}_{2}.jpg'.format(images_path, image_path, category))
@@ -103,7 +103,7 @@ def compression(images_path, image_path):
 
 
 if __name__ == '__main__':
-    images_path = 'MVI_39031'
+    images_path = 'Kodak'
     image_list = os.listdir(images_path)
     torch.cuda.empty_cache()
     for image_path in image_list:
